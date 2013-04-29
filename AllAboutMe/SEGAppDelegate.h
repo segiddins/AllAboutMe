@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
 
 @interface SEGAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property MSClient *client;
 
 @end

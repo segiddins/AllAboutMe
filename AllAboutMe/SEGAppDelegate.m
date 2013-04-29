@@ -7,6 +7,12 @@
 //
 
 #import "SEGAppDelegate.h"
+#import "SEGUser.h"
+
+#import "SEGFollowVC.h"
+#import "SEGADNViewController.h"
+
+extern NSString *SEGCurrentUserNSUDKey;
 
 @implementation SEGAppDelegate
 
@@ -14,7 +20,21 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.client = [MSClient clientWithApplicationURLString:@"https://allaboutme.azure-mobile.net/"
+                                             applicationKey:@"RKZuYmSlhqZrypetnftAOdAYaokAxk37"];
+    [SEGUser currentUser];
+    UIView *backgroundView = [[UIView alloc] initWithFrame: self.window.frame];
+    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.jpg"]];
+    [self.window addSubview:backgroundView];
+
+//    if (![NSUserDefaults.standardUserDefaults stringForKey:SEGCurrentUserNSUDKey]) {
+        self.window.rootViewController = [[SEGFollowVC alloc] init];
+//    } else {
+//        id vc = [[SEGADNViewController alloc] init];
+//        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
+//    }
     self.window.backgroundColor = [UIColor whiteColor];
+    [self customizeUIAppearance];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -44,6 +64,18 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)customizeUIAppearance {
+//    for (NSString *familyName in [UIFont familyNames]) {
+//        for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+//            NSLog(@"%@ - %@", familyName, fontName);
+//        }
+//    }
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                UITextAttributeTextColor: UIColor.whiteColor
+     }];
+    [UINavigationBar.appearance setTintColor: [UIColor colorWithRed:0.820 green:0.314 blue:0.314 alpha:1.000]];
 }
 
 @end

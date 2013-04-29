@@ -1,1 +1,0 @@
-../../WindowsAzureMobileServices/WindowsAzureMobileServicesDummy.h
