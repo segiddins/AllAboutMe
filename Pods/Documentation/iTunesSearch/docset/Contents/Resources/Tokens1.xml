@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ItunesSearch.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ItunesSearch</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/setPartnerId:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *partnerId</Declaration>
+			
+			
+			<Anchor>//api/name/partnerId</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ItunesSearch/partnerId</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *partnerId</Declaration>
+			
+			
+			<Anchor>//api/name/partnerId</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/setTradeDoublerId:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *tradeDoublerId</Declaration>
+			
+			
+			<Anchor>//api/name/tradeDoublerId</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ItunesSearch/tradeDoublerId</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *tradeDoublerId</Declaration>
+			
+			
+			<Anchor>//api/name/tradeDoublerId</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/setCacheDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (unsafe_unretained, nonatomic) id&lt;ItunesSearchCache&gt; cacheDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/cacheDelegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ItunesSearch/cacheDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (unsafe_unretained, nonatomic) id&lt;ItunesSearchCache&gt; cacheDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/cacheDelegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/setTimeoutInterval:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSTimeInterval timeoutInterval</Declaration>
+			
+			
+			<Anchor>//api/name/timeoutInterval</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ItunesSearch/timeoutInterval</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSTimeInterval timeoutInterval</Declaration>
+			
+			
+			<Anchor>//api/name/timeoutInterval</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/setMaxCacheAge:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSTimeInterval maxCacheAge</Declaration>
+			
+			
+			<Anchor>//api/name/maxCacheAge</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ItunesSearch/maxCacheAge</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSTimeInterval maxCacheAge</Declaration>
+			
+			
+			<Anchor>//api/name/maxCacheAge</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/ItunesSearch/sharedInstance</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>+ (ItunesSearch *)sharedInstance</Declaration>
+			
+			
+			<Anchor>//api/name/sharedInstance</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/performApiCallForMethod:withParams:andFilters:successHandler:failureHandler:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>- (void)performApiCallForMethod:(NSString *)method withParams:(NSDictionary *)params andFilters:(NSDictionary *)filters successHandler:(ItunesSearchReturnBlockWithObject)successHandler failureHandler:(ItunesSearchReturnBlockWithError)failureHandler</Declaration>
+			
+			
+			<Anchor>//api/name/performApiCallForMethod:withParams:andFilters:successHandler:failureHandler:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/performApiCallForMethod:useCache:withParams:andFilters:successHandler:failureHandler:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>- (void)performApiCallForMethod:(NSString *)method useCache:(BOOL)useCache withParams:(NSDictionary *)params andFilters:(NSDictionary *)filters successHandler:(ItunesSearchReturnBlockWithObject)successHandler failureHandler:(ItunesSearchReturnBlockWithError)failureHandler</Declaration>
+			
+			
+			<Anchor>//api/name/performApiCallForMethod:useCache:withParams:andFilters:successHandler:failureHandler:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/getTracksForAlbums:limitOrNil:sucessHandler:failureHandler:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>- (void)getTracksForAlbums:(NSArray *)albumIds limitOrNil:(NSNumber *)limit sucessHandler:(ItunesSearchReturnBlockWithArray)successHandler failureHandler:(ItunesSearchReturnBlockWithError)failureHandler</Declaration>
+			
+			
+			<Anchor>//api/name/getTracksForAlbums:limitOrNil:sucessHandler:failureHandler:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/getAlbumsForArtist:limitOrNil:successHandler:failureHandler:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>- (void)getAlbumsForArtist:(NSNumber *)artistId limitOrNil:(NSNumber *)limit successHandler:(ItunesSearchReturnBlockWithArray)successHandler failureHandler:(ItunesSearchReturnBlockWithError)failureHandler</Declaration>
+			
+			
+			<Anchor>//api/name/getAlbumsForArtist:limitOrNil:successHandler:failureHandler:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/getAlbumWithArtist:andName:limitOrNil:successHandler:failureHandler:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>- (void)getAlbumWithArtist:(NSString *)artistName andName:(NSString *)albumName limitOrNil:(NSNumber *)limit successHandler:(ItunesSearchReturnBlockWithArray)successHandler failureHandler:(ItunesSearchReturnBlockWithError)failureHandler</Declaration>
+			
+			
+			<Anchor>//api/name/getAlbumWithArtist:andName:limitOrNil:successHandler:failureHandler:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/getIdForArtist:successHandler:failureHandler:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>- (void)getIdForArtist:(NSString *)artist successHandler:(ItunesSearchReturnBlockWithArray)successHandler failureHandler:(ItunesSearchReturnBlockWithError)failureHandler</Declaration>
+			
+			
+			<Anchor>//api/name/getIdForArtist:successHandler:failureHandler:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ItunesSearch/getTrackWithName:artist:album:limitOrNil:successHandler:failureHandler:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ItunesSearch.h</DeclaredIn>			
+			
+			<Declaration>- (void)getTrackWithName:(NSString *)trackName artist:(NSString *)artist album:(NSString *)album limitOrNil:(NSNumber *)limit successHandler:(ItunesSearchReturnBlockWithArray)successHandler failureHandler:(ItunesSearchReturnBlockWithError)failureHandler</Declaration>
+			
+			
+			<Anchor>//api/name/getTrackWithName:artist:album:limitOrNil:successHandler:failureHandler:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

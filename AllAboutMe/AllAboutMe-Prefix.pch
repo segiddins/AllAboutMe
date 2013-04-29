@@ -12,5 +12,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "SEGAppDelegate.h"
-#define SEG_TEXT_COLOR ([UIColor colorWithWhite:0.678 alpha:1])
+    #import <SVProgressHUD/SVProgressHUD.h>
+    #define SEG_TEXT_COLOR ([UIColor colorWithWhite:0.678 alpha:1])
 #endif

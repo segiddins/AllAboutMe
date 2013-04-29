@@ -11,7 +11,7 @@
 @interface SEGUser : NSObject
 
 @property NSString *username;
-@property NSInteger *userID;
+@property NSNumber *userID;
 @property NSString *name;
 @property NSString *youtubeUsername;
 @property NSString *adnUsername;
@@ -25,6 +25,8 @@
 @property NSArray  *ADNPosts;
 @property NSArray  *youtubeVideos;
 @property NSArray  *bookmarks;
+@property NSArray  *apps;
+@property NSArray  *songs;
 
 + (instancetype)currentUser;
 + (void)userWithUsername:(NSString *)username callback:(void (^)(SEGUser *user))block;

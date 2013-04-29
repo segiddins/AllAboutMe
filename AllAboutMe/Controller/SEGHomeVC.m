@@ -16,6 +16,8 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "SEGHomeHeader.h"
 #import "SEGBookmarksVC.h"
+#import "SEGTopTenVC.h"
+#import "SEGAppListVC.h"
 
 @interface SEGHomeVC () <UICollectionViewDelegateFlowLayout>
 
@@ -79,8 +81,16 @@
             [self.navigationController pushViewController:[SEGADNViewController new] animated:YES];
             break;
             
+        case 2:
+            [self.navigationController pushViewController:[SEGTopTenVC new] animated:YES];
+            break;
+            
         case 3:
             [self openBlog];
+            break;
+            
+        case 4:
+            [self.navigationController pushViewController:[[SEGAppListVC alloc] initWithMode:SEGAppListVCModeOwn] animated:YES];
             break;
             
         case 5:

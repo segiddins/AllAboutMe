@@ -5,6 +5,7 @@ PODS:
   - BlockRSSParser (1.1):
     - AFNetworking (~> 1.2.0)
   - HCYoutubeParser (0.0.1)
+  - iTunesSearch (0.1.2)
   - RestKit (0.20.0rc1):
     - RestKit/Core
   - RestKit/Core (0.20.0rc1):
@@ -20,13 +21,16 @@ PODS:
   - RestKit/ObjectMapping (0.20.0rc1)
   - RestKit/Support (0.20.0rc1)
   - SOCKit (1.1)
+  - SVProgressHUD (0.9)
   - WindowsAzureMobileServices (0.0.2)
 
 DEPENDENCIES:
   - ADNKit
   - BlockRSSParser (from `BlockRSSParser.podspec`)
   - HCYoutubeParser
+  - iTunesSearch
   - RestKit (from `RestKit.podspec`)
+  - SVProgressHUD
   - WindowsAzureMobileServices (from `WindowsAzureMobileServices.podspec`)
 
 EXTERNAL SOURCES:
@@ -42,8 +46,10 @@ SPEC CHECKSUMS:
   AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
   BlockRSSParser: 5e742726491f80350b8c65ae1d5fd1bf96a13a05
   HCYoutubeParser: b5e88f679f613c1bbe58df3e173f46be38dcfbc0
+  iTunesSearch: d943f026989871476d26c0cb861d580a031c2946
   RestKit: 45292a07899cd1dc8e18f0034c996dfc8861e6fa
   SOCKit: ed67aeeca4a697b63a933229e53f4670d5b9300f
+  SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
   WindowsAzureMobileServices: d410292ff7c3ce2555b313909863865b8a20042c
 
 COCOAPODS: 0.18.1
