@@ -24,6 +24,10 @@
 		C0094902172B78E80036D5DB /* ss-social-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0094901172B78E80036D5DB /* ss-social-regular.ttf */; };
 		C0094904172B78FC0036D5DB /* ss-standard.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0094903172B78FC0036D5DB /* ss-standard.ttf */; };
 		C0094906172B7E1D0036D5DB /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0094905172B7E1D0036D5DB /* bg.jpg */; };
+		C00AEA6D172EF463005361FF /* SEGSong.m in Sources */ = {isa = PBXBuildFile; fileRef = C00AEA6C172EF463005361FF /* SEGSong.m */; };
+		C00AEA70172EFA7D005361FF /* SEGTopTenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C00AEA6F172EFA7D005361FF /* SEGTopTenVC.m */; };
+		C00AEA73172F0997005361FF /* SEGApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C00AEA72172F0997005361FF /* SEGApp.m */; };
+		C00AEA76172F14CF005361FF /* SEGAppListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C00AEA75172F14CF005361FF /* SEGAppListVC.m */; };
 		C030D33D172DCF5D002D75AC /* adn.png in Resources */ = {isa = PBXBuildFile; fileRef = C030D33C172DCF5D002D75AC /* adn.png */; };
 		C030D33F172DD2D6002D75AC /* website.png in Resources */ = {isa = PBXBuildFile; fileRef = C030D33E172DD2D6002D75AC /* website.png */; };
 		C030D341172DD39B002D75AC /* blog.png in Resources */ = {isa = PBXBuildFile; fileRef = C030D340172DD39B002D75AC /* blog.png */; };
@@ -80,6 +84,14 @@
 		C0094901172B78E80036D5DB /* ss-social-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ss-social-regular.ttf"; sourceTree = "<group>"; };
 		C0094903172B78FC0036D5DB /* ss-standard.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ss-standard.ttf"; sourceTree = "<group>"; };
 		C0094905172B7E1D0036D5DB /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		C00AEA6B172EF463005361FF /* SEGSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGSong.h; path = Model/SEGSong.h; sourceTree = "<group>"; };
+		C00AEA6C172EF463005361FF /* SEGSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGSong.m; path = Model/SEGSong.m; sourceTree = "<group>"; };
+		C00AEA6E172EFA7D005361FF /* SEGTopTenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGTopTenVC.h; path = Controller/SEGTopTenVC.h; sourceTree = "<group>"; };
+		C00AEA6F172EFA7D005361FF /* SEGTopTenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGTopTenVC.m; path = Controller/SEGTopTenVC.m; sourceTree = "<group>"; };
+		C00AEA71172F0997005361FF /* SEGApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGApp.h; path = Model/SEGApp.h; sourceTree = "<group>"; };
+		C00AEA72172F0997005361FF /* SEGApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGApp.m; path = Model/SEGApp.m; sourceTree = "<group>"; };
+		C00AEA74172F14CF005361FF /* SEGAppListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGAppListVC.h; path = Controller/SEGAppListVC.h; sourceTree = "<group>"; };
+		C00AEA75172F14CF005361FF /* SEGAppListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGAppListVC.m; path = Controller/SEGAppListVC.m; sourceTree = "<group>"; };
 		C030D33C172DCF5D002D75AC /* adn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adn.png; sourceTree = "<group>"; };
 		C030D33E172DD2D6002D75AC /* website.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = website.png; sourceTree = "<group>"; };
 		C030D340172DD39B002D75AC /* blog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blog.png; sourceTree = "<group>"; };
@@ -202,6 +214,10 @@
 			children = (
 				C00948F1172A1D5E0036D5DB /* SEGUser.h */,
 				C00948F2172A1D5E0036D5DB /* SEGUser.m */,
+				C00AEA6B172EF463005361FF /* SEGSong.h */,
+				C00AEA6C172EF463005361FF /* SEGSong.m */,
+				C00AEA71172F0997005361FF /* SEGApp.h */,
+				C00AEA72172F0997005361FF /* SEGApp.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -238,6 +254,10 @@
 				C035AF66172C9D9F00F294C5 /* SEGYoutubeCollectionVC.m */,
 				C030D34F172DF4CB002D75AC /* SEGBookmarksVC.h */,
 				C030D350172DF4CB002D75AC /* SEGBookmarksVC.m */,
+				C00AEA6E172EFA7D005361FF /* SEGTopTenVC.h */,
+				C00AEA6F172EFA7D005361FF /* SEGTopTenVC.m */,
+				C00AEA74172F14CF005361FF /* SEGAppListVC.h */,
+				C00AEA75172F14CF005361FF /* SEGAppListVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -438,6 +458,10 @@
 				C035AF6A172CB95700F294C5 /* SEGYoutubeCell.m in Sources */,
 				C030D344172DD453002D75AC /* SEGHomeHeader.m in Sources */,
 				C030D351172DF4CB002D75AC /* SEGBookmarksVC.m in Sources */,
+				C00AEA6D172EF463005361FF /* SEGSong.m in Sources */,
+				C00AEA70172EFA7D005361FF /* SEGTopTenVC.m in Sources */,
+				C00AEA73172F0997005361FF /* SEGApp.m in Sources */,
+				C00AEA76172F14CF005361FF /* SEGAppListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

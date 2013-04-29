@@ -11,6 +11,9 @@
 #import <BlockRSSParser/RSSParser.h>
 #import <ADNKit/ADNKit.h>
 #import <RestKit/RestKit.h>
+#import <iTunesSearch/ItunesSearch.h>
+#import "SEGSong.h"
+#import "SEGApp.h"
 
 @interface RSSItem (YoutubeVideos)
 
@@ -55,6 +58,7 @@ static SEGUser *_currentUser;
         block(_currentUser);
         [[NSUserDefaults standardUserDefaults] setValue:username forKey:SEGCurrentUserNSUDKey];
         [_currentUser loadSongsWithCompletion:^(NSArray *videos, NSError *error) {}];
+        [_currentUser loadAppsWithCompletion:^(NSArray *apps, NSError *error) {}];
     }];
 }
 
@@ -62,7 +66,7 @@ static SEGUser *_currentUser;
     self = [super init];
     if (self) {
         self.username = dictionary[@"username"];
-        self.userID = dictionary[@"userid"];
+        self.userID = dictionary[@"id"];
         self.name = dictionary[@"name"];
         self.youtubeUsername = dictionary[@"youtube"];
         self.adnUsername = dictionary[@"adn"];
@@ -170,22 +174,63 @@ static SEGUser *_currentUser;
 }
 
 - (void)loadSongsWithCompletion:(void (^)(NSArray* songs, NSError* error))block {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-      MSClient *client = [(SEGAppDelegate *)UIApplication.sharedApplication.delegate client];
-      MSTable *songsTable = [client tableWithName:@"songs"];
-      [usersTable readWithQueryString:[NSString stringWithFormat:@"userid=%@", self.userID] completion:^(NSArray *items, NSInteger totalCount, NSError *error) {
-          if (error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-              NSLog(@">>> ERROR: %@", error.debugDescription);
-              block(nil, error);
-            });
-              return;
+  MSClient *client = [(SEGAppDelegate *)UIApplication.sharedApplication.delegate client];
+  MSTable *songsTable = [client tableWithName:@"songs"];
+  [songsTable readWithQueryString:[NSString stringWithFormat:@"userid=%@", self.userID] completion:^(NSArray *songs, NSInteger totalCount, NSError *error) {
+      if (error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          NSLog(@">>> ERROR: %@", error.debugDescription);
+          block(nil, error);
+        });
+          return;
+      }
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+          NSMutableArray *segSongs = [NSMutableArray array];
+          for (NSDictionary *dict in songs) {
+              SEGSong *song = [[SEGSong alloc] initWithDictionary:dict];
+              [song loadTrackInfo];
+              [segSongs addObject:song];
           }
-          NSLog(@"songs: %@", items);
+          
+          while (![SEGSong allLoaded]) {
+              
+          }
+          self.songs = [NSArray arrayWithArray:segSongs];
           dispatch_async(dispatch_get_main_queue(), ^{
-            block(songs, nil);
+              block(self.songs, nil);
           });
-    });
+      });
+  }];
+}
+
+- (void)loadAppsWithCompletion:(void (^)(NSArray* apps, NSError* error))block {
+    MSClient *client = [(SEGAppDelegate *)UIApplication.sharedApplication.delegate client];
+    MSTable *appsTable = [client tableWithName:@"apps"];
+    [appsTable readWithQueryString:[NSString stringWithFormat:@"userid=%@&isown=1", self.userID] completion:^(NSArray *apps, NSInteger totalCount, NSError *error) {
+        if (error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@">>> ERROR: %@", error.debugDescription);
+                block(nil, error);
+            });
+            return;
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSMutableArray *segApps = [NSMutableArray array];
+            for (NSDictionary *dict in apps) {
+                SEGApp *app = [[SEGApp alloc] initWithDictionary:dict];
+                [app loadAppInfo];
+                [segApps addObject:app];
+            }
+            
+            while (![SEGApp allLoaded]) {
+                
+            }
+            self.apps = [NSArray arrayWithArray:segApps];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                block(self.apps, nil);
+            });
+        });
+    }];
 }
 
 @end
