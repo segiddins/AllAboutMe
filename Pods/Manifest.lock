@@ -20,28 +20,30 @@ PODS:
   - RestKit/ObjectMapping (0.20.0rc1)
   - RestKit/Support (0.20.0rc1)
   - SOCKit (1.1)
-  - WindowsAzureMobileServices (0.2)
+  - WindowsAzureMobileServices (0.0.2)
 
 DEPENDENCIES:
   - ADNKit
   - BlockRSSParser (from `BlockRSSParser.podspec`)
   - HCYoutubeParser
   - RestKit (from `RestKit.podspec`)
-  - WindowsAzureMobileServices
+  - WindowsAzureMobileServices (from `WindowsAzureMobileServices.podspec`)
 
 EXTERNAL SOURCES:
   BlockRSSParser:
-    :local: BlockRSSParser.podspec
+    :podspec: BlockRSSParser.podspec
   RestKit:
-    :local: RestKit.podspec
+    :podspec: RestKit.podspec
+  WindowsAzureMobileServices:
+    :podspec: WindowsAzureMobileServices.podspec
 
 SPEC CHECKSUMS:
   ADNKit: f26ef87fef292144d83ed569efcb45e186454d62
   AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
-  BlockRSSParser: 6b15e0e587c0b8bf7959bf390d47a16b294a9cbb
+  BlockRSSParser: 5e742726491f80350b8c65ae1d5fd1bf96a13a05
   HCYoutubeParser: b5e88f679f613c1bbe58df3e173f46be38dcfbc0
-  RestKit: 27962ca54a51e6aa9edba6ab64bf5e210fdfecdc
+  RestKit: 45292a07899cd1dc8e18f0034c996dfc8861e6fa
   SOCKit: ed67aeeca4a697b63a933229e53f4670d5b9300f
-  WindowsAzureMobileServices: 2afdf716735790b7e0753781964597da6edfd14d
+  WindowsAzureMobileServices: d410292ff7c3ce2555b313909863865b8a20042c
 
 COCOAPODS: 0.18.1
