@@ -5,6 +5,7 @@
 #define __POD_AFNetworking
 #define __POD_BlockRSSParser
 #define __POD_HCYoutubeParser
+#define __POD_HHPanningTableViewCell
 #define __POD_RestKit
 #define __POD_RestKit_Core
 #define __POD_RestKit_CoreData

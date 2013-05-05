@@ -38,6 +38,8 @@
 	// Do any additional setup after loading the view.
     [self setupABMLabel];
     [self setupFollow];
+    [self setupCreatedBy];
+    [_followField setText:@"segiddins"];
     [_followField becomeFirstResponder];
 }
 
@@ -105,6 +107,18 @@
     [_abmLabel addGestureRecognizer:tgr];
     
     [self.view addSubview:_abmLabel];
+}
+
+- (void)setupCreatedBy {
+    UILabel *createdBy = [[UILabel alloc] initWithFrame:CGRectMake(0, 250, self.view.frame.size.width, 42)];
+    createdBy.text = @"Created By Samuel E. Giddins";
+    createdBy.textColor = SEG_TEXT_COLOR;
+    createdBy.backgroundColor = [UIColor clearColor];
+    createdBy.textAlignment = NSTextAlignmentCenter;
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginSEG)];
+    createdBy.userInteractionEnabled = YES;
+    [createdBy addGestureRecognizer:tgr];
+    [self. view addSubview:createdBy];
 }
 
 - (void)didReceiveMemoryWarning

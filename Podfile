@@ -1,5 +1,6 @@
 platform :ios, '6.1'
 
+pod 'HHPanningTableViewCell'
 pod 'SVProgressHUD'
 pod 'iTunesSearch'
 pod 'ADNKit'

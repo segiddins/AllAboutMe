@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/HHPanningTableViewCell.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/HHPanningTableViewCell</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/initWithStyle:reuseIdentifier:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier</Declaration>
+			
+			
+			<Anchor>//api/name/initWithStyle:reuseIdentifier:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/setDrawerView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, strong) IBOutlet UIView *drawerView</Declaration>
+			
+			
+			<Anchor>//api/name/drawerView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/HHPanningTableViewCell/drawerView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, strong) IBOutlet UIView *drawerView</Declaration>
+			
+			
+			<Anchor>//api/name/drawerView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/setDirectionMask:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) NSInteger directionMask</Declaration>
+			
+			
+			<Anchor>//api/name/directionMask</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/HHPanningTableViewCell/directionMask</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) NSInteger directionMask</Declaration>
+			
+			
+			<Anchor>//api/name/directionMask</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/setShouldBounce:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL shouldBounce</Declaration>
+			
+			
+			<Anchor>//api/name/shouldBounce</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/HHPanningTableViewCell/shouldBounce</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL shouldBounce</Declaration>
+			
+			
+			<Anchor>//api/name/shouldBounce</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/setMinimumPan:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat minimumPan</Declaration>
+			
+			
+			<Anchor>//api/name/minimumPan</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/HHPanningTableViewCell/minimumPan</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat minimumPan</Declaration>
+			
+			
+			<Anchor>//api/name/minimumPan</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/setMaximumPan:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat maximumPan</Declaration>
+			
+			
+			<Anchor>//api/name/maximumPan</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/HHPanningTableViewCell/maximumPan</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) CGFloat maximumPan</Declaration>
+			
+			
+			<Anchor>//api/name/maximumPan</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/setDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, weak) id&lt;HHPanningTableViewCellDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/HHPanningTableViewCell/delegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, weak) id&lt;HHPanningTableViewCellDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/isDrawerRevealed</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)isDrawerRevealed</Declaration>
+			
+			
+			<Anchor>//api/name/isDrawerRevealed</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHPanningTableViewCell/setDrawerRevealed:animated:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHPanningTableViewCell.h</DeclaredIn>			
+			
+			<Declaration>- (void)setDrawerRevealed:(BOOL)revealed animated:(BOOL)animated</Declaration>
+			
+			
+			<Anchor>//api/name/setDrawerRevealed:animated:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

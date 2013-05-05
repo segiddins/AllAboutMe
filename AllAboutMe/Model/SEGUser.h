@@ -26,6 +26,7 @@
 @property NSArray  *youtubeVideos;
 @property NSArray  *bookmarks;
 @property NSArray  *apps;
+@property NSArray  *topApps;
 @property NSArray  *songs;
 
 + (instancetype)currentUser;
@@ -35,6 +36,9 @@
 - (void)loadADNPostsWithCompletion:(void (^)(NSArray* posts, NSError* error))block;
 - (void)loadYoutubeVideosWithCompletion:(void (^)(NSArray* videos, NSError* error))block;
 - (void)loadBookmarksWithCompletion:(void (^)(NSArray* bookmarks, NSError* error))block;
+- (void)loadSongsWithCompletion:(void (^)(NSArray* songs, NSError* error))block;
+- (void)loadAppsWithCompletion:(void (^)(NSArray* apps, NSError* error))block;
+- (void)loadTopAppsWithCompletion:(void (^)(NSArray* apps, NSError* error))block;
 
 
 @end

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/HHDirectionPanGestureRecognizer.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/HHDirectionPanGestureRecognizer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHDirectionPanGestureRecognizer.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHDirectionPanGestureRecognizer/setDirection:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHDirectionPanGestureRecognizer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) HHDirectionPangestureRecognizerDirection direction</Declaration>
+			
+			
+			<Anchor>//api/name/direction</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/HHDirectionPanGestureRecognizer/direction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHDirectionPanGestureRecognizer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) HHDirectionPangestureRecognizerDirection direction</Declaration>
+			
+			
+			<Anchor>//api/name/direction</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/HHDirectionPanGestureRecognizer/setPanRecognized:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHDirectionPanGestureRecognizer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign, readonly) BOOL panRecognized</Declaration>
+			
+			
+			<Anchor>//api/name/panRecognized</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/HHDirectionPanGestureRecognizer/panRecognized</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHDirectionPanGestureRecognizer.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign, readonly) BOOL panRecognized</Declaration>
+			
+			
+			<Anchor>//api/name/panRecognized</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

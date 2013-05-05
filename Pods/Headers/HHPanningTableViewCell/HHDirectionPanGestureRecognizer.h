@@ -1,0 +1,1 @@
+../../HHPanningTableViewCell/HHPanningTableViewCell/HHDirectionPanGestureRecognizer.h

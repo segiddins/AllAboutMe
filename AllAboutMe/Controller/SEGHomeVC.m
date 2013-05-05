@@ -22,6 +22,7 @@
 @interface SEGHomeVC () <UICollectionViewDelegateFlowLayout>
 
 @property SEGHomeHeader *headerView;
+@property CGFloat headerHeight;
 
 @end
 
@@ -50,7 +51,19 @@
     [super viewDidLoad];
     self.collectionView.backgroundColor = UIColor.clearColor;
 	// Do any additional setup after loading the view.
-    [(UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout setHeaderReferenceSize:CGSizeMake(self.collectionView.frame.size.width, 275)];
+    SEGHomeHeader *suppView = [[SEGHomeHeader alloc] initWithFrame:CGRectMake(0, 0, self.collectionView.frame.size.width, 10000)];
+    suppView.backgroundColor = [UIColor colorWithRed:0.235 green:0.275 blue:0.275 alpha:0.398438];
+    
+    UIImageView *profPic = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 250, 330)];
+    suppView.image = profPic;
+    
+    NSAttributedString *desc = [[NSAttributedString alloc] initWithString:[[SEGUser currentUser] profileDesc] attributes:@{NSForegroundColorAttributeName:SEG_TEXT_COLOR, NSFontAttributeName:[UIFont systemFontOfSize:16.0],}];
+    suppView.attributedString = desc;
+    
+    suppView.mode = 4;
+    
+    self.headerHeight = [suppView heightForAttributedString];
+    [(UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout setHeaderReferenceSize:CGSizeMake(self.collectionView.frame.size.width, self.headerHeight)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -129,16 +142,27 @@
     SEGHomeHeader *suppView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"Home Header" forIndexPath:indexPath];
     suppView.backgroundColor = [UIColor colorWithRed:0.235 green:0.275 blue:0.275 alpha:0.398438];
     
-    UIImageView *profPic = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 125, 125)];
+    UIImageView *profPic = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 250, 330)];
     [profPic setImageWithURL:[NSURL URLWithString:[[SEGUser currentUser] profilePicURL]]];
     suppView.image = profPic;
     
-    NSAttributedString *desc = [[NSAttributedString alloc] initWithString:[[SEGUser currentUser] profileDesc] attributes:@{NSForegroundColorAttributeName:SEG_TEXT_COLOR, NSFontAttributeName:[UIFont systemFontOfSize:15.0],}];
+    NSAttributedString *desc = [[NSAttributedString alloc] initWithString:[[SEGUser currentUser] profileDesc] attributes:@{NSForegroundColorAttributeName:SEG_TEXT_COLOR, NSFontAttributeName:[UIFont systemFontOfSize:16.0],}];
     suppView.attributedString = desc;
-
+    
     suppView.mode = 4;
     
-    return suppView;
+    self.headerView = suppView;
+    
+    if (!self.headerHeight) {
+        self.headerHeight = [self.headerView heightForAttributedString];
+        NSLog(@"header height %f for string length %d with image frame %@", self.headerHeight, [[[SEGUser currentUser] profileDesc] length], CGRectCreateDictionaryRepresentation(self.headerView.image.frame));
+        [profPic removeFromSuperview];
+        profPic = nil;
+        [(UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout setHeaderReferenceSize:CGSizeMake(self.collectionView.frame.size.width, self.headerHeight)];
+        [self.collectionView.collectionViewLayout invalidateLayout];
+    }
+    
+    return self.headerView;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,37 +209,37 @@
 
 - (void)configureWebsiteCell:(SEGCollectionViewCell *)cell {
     cell.title = @"Website";
-    cell.image = [UIImage imageNamed:@"website"];
+    [cell setServiceName:@"🌎" socialFont:NO];
 }
 
 - (void)configureADNCell:(SEGCollectionViewCell *)cell {
     cell.title = @"App.net";
-    cell.image = [UIImage imageNamed:@"adn"];
+    [cell setServiceName:@"" socialFont:YES];
 }
 
 - (void)configureTop10sCell:(SEGCollectionViewCell *)cell {
-    cell.title = @"10s";
+    cell.title = @"Top 10s";
     cell.image= [UIImage imageNamed:@"10s"];
 }
 
 - (void)configureBlogCell:(SEGCollectionViewCell *)cell {
     cell.title = @"Blog";
-    cell.image = [UIImage imageNamed:@"blog"];
+    [cell setServiceName:@"" socialFont:YES];
 }
 
 - (void)configureRecentReadsCell:(SEGCollectionViewCell *)cell {
     cell.title = @"Recent Reads";
-    cell.image = [UIImage imageNamed:@"bookmark"];
+    [cell setServiceName:@"" socialFont:YES];
 }
 
 - (void)configureAppsCell:(SEGCollectionViewCell *)cell {
     cell.title = @"Apps";
-    cell.image = [UIImage imageNamed:@"apps"];
+    [cell setServiceName:@"📱" socialFont:NO];
 }
 
 - (void)configureYoutubeCell:(SEGCollectionViewCell *)cell {
     cell.title = @"Youtube Vids";
-    cell.image = [UIImage imageNamed:@"youtube"];
+    [cell setServiceName:@"" socialFont:YES];
 }
 
 @end

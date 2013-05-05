@@ -13,4 +13,7 @@
 - (void)setImage:(UIImage *)image;
 - (void)setTitle:(NSString *)title;
 
+- (void)setServiceName:(NSString *)name socialFont:(BOOL)social;
+- (void)setServiceName:(NSString *)name withFont:(UIFont *)font;
+
 @end

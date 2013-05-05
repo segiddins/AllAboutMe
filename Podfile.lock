@@ -5,6 +5,7 @@ PODS:
   - BlockRSSParser (1.1):
     - AFNetworking (~> 1.2.0)
   - HCYoutubeParser (0.0.1)
+  - HHPanningTableViewCell (0.0.1)
   - iTunesSearch (0.1.2)
   - RestKit (0.20.0rc1):
     - RestKit/Core
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - ADNKit
   - BlockRSSParser (from `BlockRSSParser.podspec`)
   - HCYoutubeParser
+  - HHPanningTableViewCell
   - iTunesSearch
   - RestKit (from `RestKit.podspec`)
   - SVProgressHUD
@@ -46,6 +48,7 @@ SPEC CHECKSUMS:
   AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
   BlockRSSParser: 5e742726491f80350b8c65ae1d5fd1bf96a13a05
   HCYoutubeParser: b5e88f679f613c1bbe58df3e173f46be38dcfbc0
+  HHPanningTableViewCell: c2466a4511c2d04bb5640cfa411c9109685b3e0a
   iTunesSearch: d943f026989871476d26c0cb861d580a031c2946
   RestKit: 45292a07899cd1dc8e18f0034c996dfc8861e6fa
   SOCKit: ed67aeeca4a697b63a933229e53f4670d5b9300f

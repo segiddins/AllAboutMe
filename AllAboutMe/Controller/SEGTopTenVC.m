@@ -9,6 +9,8 @@
 #import "SEGTopTenVC.h"
 #import "SEGCollectionViewCell.h"
 #import "SEGUser.h"
+#import "SEGAppListVC.h"
+#import "SEGSongsVC.h"
 
 @interface SEGTopTenVC ()
 
@@ -53,10 +55,22 @@
 #pragma mark - CollectionView Delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0:
+            [self.navigationController pushViewController:[SEGSongsVC new] animated:YES];
+            break;
+            
+        case 1:
+            [self.navigationController pushViewController:[[SEGAppListVC alloc] initWithMode:SEGAppListVCModeTopTen] animated:YES];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return 2;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,10 +79,12 @@
     switch (indexPath.row) {
         case 0:
             [cell setTitle:@"Songs"];
+            [cell setServiceName:@"♫" socialFont:NO];
             break;
             
         case 1:
             [cell setTitle:@"Apps"];
+            [cell setServiceName:@"📱" socialFont:NO];
             break;
             
         case 2:

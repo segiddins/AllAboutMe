@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/segiddins/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.hhpanningtableviewcell.HHPanningTableViewCell-0.0.1.docset
+Time: 2013-04-30 00:00:30 +0000

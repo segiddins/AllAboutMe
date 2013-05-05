@@ -14,4 +14,6 @@
 @property (nonatomic) UIImageView *image;
 @property (nonatomic, readwrite, assign) CFIndex mode;
 
+- (CGFloat)heightForAttributedString;
+
 @end
