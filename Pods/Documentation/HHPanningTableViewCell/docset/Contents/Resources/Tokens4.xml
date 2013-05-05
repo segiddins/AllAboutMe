@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/HHInnerShadowView.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/HHInnerShadowView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>HHInnerShadowView.h</DeclaredIn>
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

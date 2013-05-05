@@ -16,3 +16,16 @@
 @property MSClient *client;
 
 @end
+
+/** This category enhances NSMutableArray by providing methods to randomly
+ * shuffle the elements using the Fisher-Yates algorithm.
+ */
+@interface NSMutableArray (Shuffling)
+- (void)shuffle;
+@end
+
+@interface NSArray (ShuffledArray)
+
+- (NSArray *)shuffledArray;
+
+@end

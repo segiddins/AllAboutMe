@@ -279,7 +279,6 @@
   // Set the previous/next page we just animated into view as the current page
   UIView* newPage = (__bridge UIView*)context;
   self.currentPageView = newPage;
-    NSLog(@"%@", CGRectCreateDictionaryRepresentation(newPage.frame));
   
   // After we've switched pages, reset the header/footer loaded states
   if (_footerLoaded && [externalDelegate respondsToSelector:@selector(footerUnloadedInScrollView:)])

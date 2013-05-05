@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>HHPanningTableViewCell 0.0.1</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						<NodeRef refid="7"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				
+				<Node type="folder">
+					<Name>Protocols</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="8"/>
+						
+					</Subnodes>
+				</Node>
+				
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1">
+			<Name>AppDelegate</Name>
+			<Path>Classes/AppDelegate.html</Path>
+		</Node>
+		<Node id="2">
+			<Name>HHAppDelegate</Name>
+			<Path>Classes/HHAppDelegate.html</Path>
+		</Node>
+		<Node id="3">
+			<Name>HHDirectionPanGestureRecognizer</Name>
+			<Path>Classes/HHDirectionPanGestureRecognizer.html</Path>
+		</Node>
+		<Node id="4">
+			<Name>HHInnerShadowView</Name>
+			<Path>Classes/HHInnerShadowView.html</Path>
+		</Node>
+		<Node id="5">
+			<Name>HHPanningTableViewCell</Name>
+			<Path>Classes/HHPanningTableViewCell.html</Path>
+		</Node>
+		<Node id="6">
+			<Name>HHTableViewController</Name>
+			<Path>Classes/HHTableViewController.html</Path>
+		</Node>
+		<Node id="7">
+			<Name>TableViewController</Name>
+			<Path>Classes/TableViewController.html</Path>
+		</Node>
+		
+		
+		<Node id="8">
+			<Name>HHPanningTableViewCellDelegate</Name>
+			<Path>Protocols/HHPanningTableViewCellDelegate.html</Path>
+		</Node>
+		
+	</Library>
+</DocSetNodes>

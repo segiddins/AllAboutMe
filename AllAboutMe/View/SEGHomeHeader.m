@@ -153,7 +153,7 @@ static const CFIndex kColumnCount = 3;
         }
         case 4: // 1 column with image
         {
-            CGRect imageRect = CGRectMake(5, self.bounds.size.height - self.image.image.size.height/2 - 10, self.image.image.size.width/2 + 10, self.image.image.size.height/2 + 10);
+            CGRect imageRect = CGRectMake(0, self.bounds.size.height - self.image.image.size.height/2, self.image.image.size.width/2 + 10, self.image.image.size.height/2 + 10);
             CGMutablePathRef
             path = CGPathCreateMutable();
             CGPathMoveToPoint(path, NULL, self.bounds.size.width - 5, self.bounds.size.height - 5);
@@ -164,6 +164,20 @@ static const CFIndex kColumnCount = 3;
             CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(imageRect), self.bounds.size.height - 5);
             CGPathAddLineToPoint(path, NULL, self.bounds.size.width - 5, self.bounds.size.height - 5);
             CFArrayAppendValue(paths, path);
+            
+            CGPathRelease(path);
+            
+            imageRect = CGRectMake(0, self.bounds.size.height - self.image.frame.size.height/2, self.image.frame.size.width/2 + 10, self.image.frame.size.height/2 + 10);
+            path = CGPathCreateMutable();
+            CGPathMoveToPoint(path, NULL, self.bounds.size.width - 5, self.bounds.size.height - 5);
+            CGPathAddLineToPoint(path, NULL, self.bounds.size.width - 5, 5);
+            CGPathAddLineToPoint(path, NULL, 5, 5);
+            CGPathAddLineToPoint(path, NULL, 5, CGRectGetMinY(imageRect));
+            CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(imageRect), CGRectGetMinY(imageRect));
+            CGPathAddLineToPoint(path, NULL, CGRectGetMaxX(imageRect), self.bounds.size.height - 5);
+            CGPathAddLineToPoint(path, NULL, self.bounds.size.width - 5, self.bounds.size.height - 5);
+            CFArrayAppendValue(paths, path);
+            CGPathRelease(path);
             break;
         }
     }
@@ -172,8 +186,8 @@ static const CFIndex kColumnCount = 3;
 
 - (void)drawRect:(CGRect)rect
 {
-        CGAffineTransform transform = CGAffineTransformMakeScale(1, -1);
-        CGAffineTransformTranslate(transform, 0, -self.bounds.size.height);
+    CGAffineTransform transform = CGAffineTransformMakeScale(1, -1);
+    CGAffineTransformTranslate(transform, 0, -fabsf(self.bounds.size.height));
         self.transform = transform;
     if (self.attributedString == nil)
     {
@@ -198,9 +212,9 @@ static const CFIndex kColumnCount = 3;
     framesetter = CTFramesetterCreateWithAttributedString(attrString);
     
     CFArrayRef paths = [self copyPaths];
-    CFIndex pathCount = CFArrayGetCount(paths);
+//    CFIndex pathCount = CFArrayGetCount(paths);
     CFIndex charIndex = 0;
-    for (CFIndex pathIndex = 0; pathIndex < pathCount; ++pathIndex) {
+    for (CFIndex pathIndex = 0; pathIndex < 1; ++pathIndex) {
         CGPathRef path = CFArrayGetValueAtIndex(paths, pathIndex);
         
         CGContextAddPath(context, path); // Show paths for testing
@@ -222,8 +236,53 @@ static const CFIndex kColumnCount = 3;
     CFRelease(framesetter);
 }
 
+- (CGFloat)heightForAttributedString
+{
+    CGAffineTransform transform = CGAffineTransformMakeScale(1, -1);
+    CGAffineTransformTranslate(transform, 0, -fabsf(self.bounds.size.height));
+    self.transform = transform;
+    CGFloat H = 10;
+    
+    // Create the framesetter with the attributed string.
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString( (__bridge CFAttributedStringRef)self.attributedString);
+    
+    CFIndex startIndex = 0;
+    
+    CGPathRef path = CFArrayGetValueAtIndex([self copyPaths], 1);
+    
+    // Create a frame for this column and draw it.
+    CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(startIndex, 0), path, NULL);
+    
+    // Start the next frame at the first character not visible in this frame.
+    //CFRange frameRange = CTFrameGetVisibleStringRange(frame);
+    //startIndex += frameRange.length;
+    
+    CFArrayRef lineArray = CTFrameGetLines(frame);
+    CFIndex j = 0, lineCount = CFArrayGetCount(lineArray);
+    CGFloat h, ascent, descent, leading;
+    
+    for (j=0; j < lineCount; j++)
+    {
+        CTLineRef currentLine = (CTLineRef)CFArrayGetValueAtIndex(lineArray, j);
+        CTLineGetTypographicBounds(currentLine, &ascent, &descent, &leading);
+        h = (ascent + descent + leading + 4.25);
+        H+=h;
+    }
+    
+    CFRelease(frame);
+    CFRelease(framesetter);
+    
+    
+    return H;
+}
+
 - (void)setImage:(UIImageView *)image {
+    [_image removeFromSuperview];
+    [_image removeObserver:self forKeyPath:@"image"];
     _image = image;
+    if (image.image) {
+        _image.frame = CGRectMake(5, 5, image.image.size.width/2,image.image.size.height/2);
+    }
     [image addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:NULL];
     [self setNeedsDisplay];
 }
@@ -234,6 +293,10 @@ static const CFIndex kColumnCount = 3;
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
+}
+
+- (void)dealloc {
+    [self.image removeObserver:self forKeyPath:@"image"];
 }
 
 @end

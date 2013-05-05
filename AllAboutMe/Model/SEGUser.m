@@ -40,25 +40,28 @@ static SEGUser *_currentUser;
 }
 
 + (void)userWithUsername:(NSString *)username callback:(void (^)(SEGUser *user))block {
+    [SVProgressHUD showWithStatus:[NSString stringWithFormat: @"Loading %@", username] maskType:SVProgressHUDMaskTypeBlack];
     MSClient *client = [(SEGAppDelegate *)UIApplication.sharedApplication.delegate client];
     MSTable *usersTable = [client tableWithName:@"users"];
-    [usersTable readWithQueryString:[NSString stringWithFormat:@"username=%@", username] completion:^(NSArray *items, NSInteger totalCount, NSError *error) {
+    [usersTable readWithQueryString:[[NSString stringWithFormat:@"$filter=username eq '%@'", username] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] completion:^(NSArray *items, NSInteger totalCount, NSError *error) {
         if (error) {
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
             NSLog(@">>> ERROR: %@", error.debugDescription);
             return;
         }
-     if (items.count > 1 ) {
-         NSLog(@">>> Too many matched users");
-         return;
-     } else if (items.count < 1) {
-         NSLog(@">>> No matching user");
-         return;
-     }
-     _currentUser = [[self alloc] initWithDictionary:items[0]];
-        block(_currentUser);
-        [[NSUserDefaults standardUserDefaults] setValue:username forKey:SEGCurrentUserNSUDKey];
-        [_currentUser loadSongsWithCompletion:^(NSArray *videos, NSError *error) {}];
-        [_currentUser loadAppsWithCompletion:^(NSArray *apps, NSError *error) {}];
+         if (items.count > 1 ) {
+             [SVProgressHUD showErrorWithStatus:@"Server error :("];
+             NSLog(@">>> Too many matched users");
+             return;
+         } else if (items.count < 1) {
+             [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat: @"No user named %@ ", username]];
+             NSLog(@">>> No matching user");
+             return;
+         }
+         _currentUser = [[self alloc] initWithDictionary:items[0]];
+            [SVProgressHUD dismiss];
+            block(_currentUser);
+            [[NSUserDefaults standardUserDefaults] setValue:username forKey:SEGCurrentUserNSUDKey];
     }];
 }
 
@@ -81,17 +84,20 @@ static SEGUser *_currentUser;
 }
 
 - (void)loadBlogPostsWithCompletion:(void (^)(NSArray* feedItems, NSError* error))block {
+    [SVProgressHUD showWithStatus:@"Loading Blog Posts..."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/feed.xml",self.blogURL]]];
         [RSSParser parseRSSFeedForRequest:request
                                   success:^(NSArray *feedItems) {
                                       dispatch_async(dispatch_get_main_queue(), ^{
                                       self.RSSItems = feedItems;
+                                          [SVProgressHUD dismiss];
                                       block(feedItems, nil);
                                       });
                                   }
                                   failure:^(NSError *error) {
                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                          [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                       NSLog(@">>> ERROR: %@", error);
                                       block(nil, error);
                                       });
@@ -100,17 +106,20 @@ static SEGUser *_currentUser;
 }
 
 - (void)loadADNPostsWithCompletion:(void (^)(NSArray* posts, NSError* error))block {
+    [SVProgressHUD showWithStatus:@"Loading ADN Posts..."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         ANKClient *client = [ANKClient sharedClient];
         [client fetchPostsCreatedByUserWithID:[NSString stringWithFormat:@"@%@", self.adnUsername]
                                    completion:^(id responseObject, ANKAPIResponseMeta *meta, NSError *error) {
                                        dispatch_async(dispatch_get_main_queue(), ^{
                                            if (error) {
+                                               [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                NSLog(@">>> ERROR: %@", error);
                                                block(nil, error);
                                                return;
                                            }
                                            self.ADNPosts = responseObject;
+                                           [SVProgressHUD dismiss];
                                            block(responseObject, nil);
                                        });
                                    }];
@@ -118,6 +127,7 @@ static SEGUser *_currentUser;
 }
 
 - (void)loadYoutubeVideosWithCompletion:(void (^)(NSArray* videos, NSError* error))block {
+    [SVProgressHUD showWithStatus:@"Loading Youtube Videos..."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *feed = [NSURL URLWithString:[NSString stringWithFormat:@"http://gdata.youtube.com/feeds/api/users/%@/uploads?orderby=published", self.youtubeUsername]];
 
@@ -131,6 +141,7 @@ static SEGUser *_currentUser;
                                               replaced++;
                                               if (error || videoDictionary == nil) {
                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                      [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                                       NSLog(@">>> ERROR: %@",error);
                                                       block(nil, error);
                                                   });
@@ -140,6 +151,7 @@ static SEGUser *_currentUser;
                                               if (replaced == feedItems.count) {
                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                       self.youtubeVideos = [NSArray arrayWithArray:array];
+                                                      [SVProgressHUD dismiss];
                                                       block(self.youtubeVideos, nil);
                                                   });
                                               }
@@ -147,6 +159,7 @@ static SEGUser *_currentUser;
                                       }
                                   } failure:^(NSError *error) {
                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                          [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                       NSLog(@">>> ERROR: %@",error);
                                       block(nil, error);
                                       });
@@ -155,6 +168,7 @@ static SEGUser *_currentUser;
 }
 
 - (void)loadBookmarksWithCompletion:(void (^)(NSArray* bookmarks, NSError* error))block {
+    [SVProgressHUD showWithStatus:@"Loading Recent Reads..."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://feeds.pinboard.in/rss/u:%@/", self.pinboardUsername]];
 
@@ -162,10 +176,12 @@ static SEGUser *_currentUser;
                                   success:^(NSArray *feedItems) {
                                       dispatch_async(dispatch_get_main_queue(), ^{
                                           self.bookmarks = feedItems;
+                                          [SVProgressHUD dismiss];
                                           block(feedItems, nil);
                                       });
                                   } failure:^(NSError *error) {
                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                          [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                                           NSLog(@">>> ERROR: %@",error);
                                           block(nil, error);
                                       });
@@ -176,9 +192,11 @@ static SEGUser *_currentUser;
 - (void)loadSongsWithCompletion:(void (^)(NSArray* songs, NSError* error))block {
   MSClient *client = [(SEGAppDelegate *)UIApplication.sharedApplication.delegate client];
   MSTable *songsTable = [client tableWithName:@"songs"];
-  [songsTable readWithQueryString:[NSString stringWithFormat:@"userid=%@", self.userID] completion:^(NSArray *songs, NSInteger totalCount, NSError *error) {
+    [SVProgressHUD showWithStatus:@"Loading Top Ten Songs..."];
+  [songsTable readWithQueryString:[[NSString stringWithFormat:@"$filter=userid eq %@", self.userID] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] completion:^(NSArray *songs, NSInteger totalCount, NSError *error) {
       if (error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
           NSLog(@">>> ERROR: %@", error.debugDescription);
           block(nil, error);
         });
@@ -195,8 +213,10 @@ static SEGUser *_currentUser;
           while (![SEGSong allLoaded]) {
               
           }
+          [segSongs shuffle];
           self.songs = [NSArray arrayWithArray:segSongs];
           dispatch_async(dispatch_get_main_queue(), ^{
+              [SVProgressHUD dismiss];
               block(self.songs, nil);
           });
       });
@@ -204,11 +224,13 @@ static SEGUser *_currentUser;
 }
 
 - (void)loadAppsWithCompletion:(void (^)(NSArray* apps, NSError* error))block {
+    [SVProgressHUD showWithStatus:@"Loading My Apps..."];
     MSClient *client = [(SEGAppDelegate *)UIApplication.sharedApplication.delegate client];
     MSTable *appsTable = [client tableWithName:@"apps"];
-    [appsTable readWithQueryString:[NSString stringWithFormat:@"userid=%@&isown=1", self.userID] completion:^(NSArray *apps, NSInteger totalCount, NSError *error) {
+    [appsTable readWithQueryString:[[NSString stringWithFormat:@"$filter=userid eq %@ and isown eq 1", self.userID] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] completion:^(NSArray *apps, NSInteger totalCount, NSError *error) {
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
                 NSLog(@">>> ERROR: %@", error.debugDescription);
                 block(nil, error);
             });
@@ -225,9 +247,45 @@ static SEGUser *_currentUser;
             while (![SEGApp allLoaded]) {
                 
             }
+            [segApps shuffle];
             self.apps = [NSArray arrayWithArray:segApps];
             dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
                 block(self.apps, nil);
+            });
+        });
+    }];
+}
+
+- (void)loadTopAppsWithCompletion:(void (^)(NSArray* apps, NSError* error))block {
+    MSClient *client = [(SEGAppDelegate *)UIApplication.sharedApplication.delegate client];
+    MSTable *appsTable = [client tableWithName:@"apps"];
+    [SVProgressHUD showWithStatus:@"Loading Top Ten Apps"];
+    [appsTable readWithQueryString:[[NSString stringWithFormat:@"$filter=userid eq %@ and isown eq 0", self.userID] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] completion:^(NSArray *apps, NSInteger totalCount, NSError *error) {
+        if (error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                NSLog(@">>> ERROR: %@", error.debugDescription);
+                block(nil, error);
+            });
+            return;
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSMutableArray *segApps = [NSMutableArray array];
+            for (NSDictionary *dict in apps) {
+                SEGApp *app = [[SEGApp alloc] initWithDictionary:dict];
+                [app loadAppInfo];
+                [segApps addObject:app];
+            }
+            
+            while (![SEGApp allLoaded]) {
+                
+            }
+            [segApps shuffle];
+            self.topApps = [NSArray arrayWithArray:segApps];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                block(self.topApps, nil);
             });
         });
     }];

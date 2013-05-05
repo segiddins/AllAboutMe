@@ -25,8 +25,8 @@ static NSInteger _loadCount = 0;
     _loadCount++;
     [[ItunesSearch sharedInstance] performApiCallForMethod:@"lookup" withParams:@{@"id":self.itmsID, @"media":@"software"} andFilters:nil successHandler:^(id result) {
         NSDictionary *dict = [result count] >0 ? result[0] : nil;
-        _artworkURL = dict[@"artworkUrl512"] ?: dict[@"artworkUrl100"] ?: dict[@"artworkUrl60"] ?: dict[@"artworkUrl30"] ?: nil;
-        _link = dict[@"trackViewUrl"];
+        _artworkURL = [NSURL URLWithString: dict[@"artworkUrl512"] ?: dict[@"artworkUrl100"] ?: dict[@"artworkUrl60"] ?: dict[@"artworkUrl30"] ?: nil];
+        _link = [NSURL URLWithString: dict[@"trackViewUrl"]];
         _appDescription = dict[@"description"];
         _developer = dict[@"artistName"];
         _title = dict[@"trackName"];

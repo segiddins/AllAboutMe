@@ -25,11 +25,12 @@ static NSInteger _loadCount = 0;
 
 - (void)loadTrackInfo {
     _loadCount++;
-    [[ItunesSearch sharedInstance] getTrackWithName:self.title artist:self.artist album:self.album limitOrNil:@1 successHandler:^(NSArray *result) {
+    [[ItunesSearch sharedInstance] getTrackWithName:[self.title stringByReplacingOccurrencesOfString:@"&" withString:@""] artist:self.artist album:self.album limitOrNil:@1 successHandler:^(NSArray *result) {
         NSDictionary *dict = result.count >0 ? result[0] : nil;
-        _artworkURL = dict[@"artworkUrl100"] ?: dict[@"artworkUrl60"] ?: dict[@"artworkUrl30"] ?: nil;
-        _previewURL = dict[@"previewUrl"];
-        _trackURL = dict[@"trackViewUrl"];
+        _title = dict[@"trackName"];
+        _artworkURL = [NSURL URLWithString:dict[@"artworkUrl100"] ?: dict[@"artworkUrl60"] ?: dict[@"artworkUrl30"] ?: nil];
+        _previewURL = [NSURL URLWithString:dict[@"previewUrl"]];
+        _trackURL = [NSURL URLWithString:dict[@"trackViewUrl"]];
         _loadCount--;
     } failureHandler:^(NSError *error) {
         _loadCount--;
