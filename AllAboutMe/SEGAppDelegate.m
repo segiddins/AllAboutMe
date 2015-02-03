@@ -21,7 +21,7 @@ extern NSString *SEGCurrentUserNSUDKey;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.client = [MSClient clientWithApplicationURLString:@"https://allaboutme.azure-mobile.net/"
-                                             applicationKey:***REMOVED***];
+                                             applicationKey:nil];
     [SEGUser currentUser];
     UIView *backgroundView = [[UIView alloc] initWithFrame: self.window.frame];
     backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.jpg"]];
